@@ -18,6 +18,7 @@ public class DefaultConsumerService implements ConsumerService {
 	RestTemplate restTemplate;
 
 	@HystrixCommand(fallbackMethod = "fallback")
+	@Override
 	public String consumer() {
 		return restTemplate.getForObject("http://eureka-client/dc", String.class);
 	}
